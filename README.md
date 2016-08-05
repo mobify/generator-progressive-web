@@ -1,2 +1,7 @@
-# generator-progressive-web
-The generator for creating Progressive Web projects
+# Progressive Web Generator
+
+To generate a Progressive Web project:
+
+```
+bash <(curl -fsS https://raw.githubusercontent.com/mobify/generator-progressive-web/master/generator.sh)
+```
