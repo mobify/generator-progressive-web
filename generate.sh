@@ -2,7 +2,7 @@
 set -o pipefail
 
 MYDIR=$(pwd)
-SCAFFOLD_VERSION_OR_BRANCH="develop"
+SCAFFOLD_VERSION_OR_BRANCH="generator-changes"
 SCAFFOLD_URL="https://github.com/mobify/progressive-web-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
 
 # Prompt license and do not proceed unless user has accepted
