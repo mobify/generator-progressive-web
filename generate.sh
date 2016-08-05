@@ -45,8 +45,8 @@ WORKING_DIR=$(mktemp -d /tmp/progressive-web-scaffold.XXXXX)
 trap 'rm -rf "$WORKING_DIR"' EXIT
 curl --progress-bar -L "$SCAFFOLD_URL" -o "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
 cd "$WORKING_DIR" || exit
-unzip -q "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip" -d "$product_dir"
-cp -R "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH/" "$project_dir"
+unzip -q "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
+cp -R $WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH/* "$project_dir"
 cd "$project_dir" || exit
 
 # Remove files that are specific to the scaffold but not to projects
