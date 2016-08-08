@@ -22,20 +22,23 @@ if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
     exit 1
 fi
 
-# Get the project name from the user
-read -p'--> What is the name of your project? ' project_name
+# Get the project slug from the user
+read -p'--> What is your project slug? (should match slug on Mobify Cloud) ' project_slug
 
-# $project_name must not contain special characters.
-project_name=$(echo "$project_name" | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]' | tr -d ' ')
+# Get the project url from the user
+read -p'--> What is the project url? ' project_url
 
-read -p"--> Continue with the project name '$project_name'? (y/n) " -n 1 -r
+# $project_slug must not contain special characters.
+project_slug=$(echo "$project_slug" | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]' | tr -d ' ')
+
+read -p"--> Continue with the project name '$project_slug'? (y/n) " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
     exit 1
 fi
 
 # Prepare new project directory
-project_dir="$MYDIR/$project_name"
+project_dir="$MYDIR/$project_slug"
 echo "Setting up new project in $project_dir"
 mkdir "$project_dir"
 cd "$project_dir" || exit
@@ -52,8 +55,11 @@ cd "$project_dir" || exit
 # Remove files that are specific to the scaffold but not to projects
 rm CONTRIBUTING.md
 
-# Replace "progressive-web-scaffold" with $project_name inside of files.
-egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/progressive-web-scaffold/$project_name/g" 2>/dev/null
+# Replace "progressive-web-scaffold" with $project_slug inside of files.
+egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/progressive-web-scaffold/$project_slug/g" 2>/dev/null
+
+# Set site url
+egrep -lR "siteUrl" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/\"siteUrl\": \"\"/\"siteUrl\": \"$project_url\"/g" 2>/dev/null
 
 printf "\nInstalling project dependencies\n"
 npm install
