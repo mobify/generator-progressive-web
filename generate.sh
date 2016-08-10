@@ -28,15 +28,6 @@ read -p'--> What is your project slug? (should match slug on Mobify Cloud) ' pro
 # Get the project url from the user
 read -p'--> What is the project url? ' project_url
 
-# $project_slug must not contain special characters.
-project_slug=$(echo "$project_slug" | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]' | tr -d ' ')
-
-read -p"--> Continue with the project name '$project_slug'? (y/n) " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
-    exit 1
-fi
-
 # Prepare new project directory
 project_dir="$MYDIR/$project_slug"
 echo "Setting up new project in $project_dir"
