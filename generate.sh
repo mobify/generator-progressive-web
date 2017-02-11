@@ -46,6 +46,9 @@ cd "$project_dir" || exit
 # Remove files that are specific to the scaffold but not to projects
 rm CONTRIBUTING.md
 
+# This is about the web
+cd web || exit
+
 # Replace "progressive-web-scaffold" with $project_slug inside of files.
 egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/progressive-web-scaffold/$project_slug/g" 2>/dev/null
 
@@ -56,6 +59,7 @@ printf "\nInstalling project dependencies\n"
 npm install
 
 # Make first commit
+cd "$project_dir" || exit
 git init
 git add .
 git commit -am 'Your first Progressive Web commit - Congrats! 🌟 👍🏽'
