@@ -3,7 +3,7 @@ set -o pipefail
 
 MYDIR=$(pwd)
 SCAFFOLD_VERSION_OR_BRANCH="master"
-SCAFFOLD_URL="https://github.com/mobify/progressive-web-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
+SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
 
 # Prompt license and do not proceed unless user has accepted
 read -p"--> We have a license you must read and agree to. Read license? (y/n) " -n 1 -r
@@ -12,7 +12,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
     exit 1
 fi
 
-curl -s -O -L https://raw.githubusercontent.com/mobify/progressive-web-scaffold/develop/LICENSE
+curl -s -O -L https://raw.githubusercontent.com/mobify/platform-scaffold/master/LICENSE
 trap 'rm -f LICENSE' EXIT
 less LICENSE
 
@@ -35,16 +35,16 @@ mkdir "$project_dir"
 cd "$project_dir" || exit
 
 printf "\nDownloading Progressive Web project scaffold\n"
-WORKING_DIR=$(mktemp -d /tmp/progressive-web-scaffold.XXXXX)
+WORKING_DIR=$(mktemp -d /tmp/platform-scaffold.XXXXX)
 trap 'rm -rf "$WORKING_DIR"' EXIT
-curl --progress-bar -L "$SCAFFOLD_URL" -o "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
+curl --progress-bar -L "$SCAFFOLD_URL" -o "$WORKING_DIR/platform-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
 cd "$WORKING_DIR" || exit
-unzip -q "$WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
-cp -R $WORKING_DIR/progressive-web-scaffold-$SCAFFOLD_VERSION_OR_BRANCH/. "$project_dir"
+unzip -q "$WORKING_DIR/platform-scaffold-$SCAFFOLD_VERSION_OR_BRANCH.zip"
+cp -R $WORKING_DIR/platform-scaffold-$SCAFFOLD_VERSION_OR_BRANCH/. "$project_dir"
 cd "$project_dir" || exit
 
 # Remove files that are specific to the scaffold but not to projects
-rm CONTRIBUTING.md
+rm CONTRIBUTING.md ROADMAP.md
 
 # This is about the web
 cd web || exit
