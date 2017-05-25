@@ -44,7 +44,7 @@ cp -R $WORKING_DIR/platform-scaffold-$SCAFFOLD_VERSION_OR_BRANCH/. "$project_dir
 cd "$project_dir" || exit
 
 # Remove files that are specific to the scaffold but not to projects
-rm CONTRIBUTING.md ROADMAP.md
+rm CONTRIBUTING.md ROADMAP.md web/DEVELOPING.md
 
 # This is about the web
 cd web || exit
