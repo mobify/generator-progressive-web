@@ -28,6 +28,9 @@ read -p'--> What is your project slug? (should match slug on Mobify Cloud) ' pro
 # Get the project url from the user
 read -p'--> What is the project url? ' project_url
 
+# Get the site name from the user
+read -p'--> What is the project name? ' project_name
+
 # Prepare new project directory
 project_dir="$MYDIR/$project_slug"
 echo "Setting up new project in $project_dir"
@@ -45,6 +48,10 @@ cd "$project_dir" || exit
 
 # Remove files that are specific to the scaffold but not to projects
 rm CONTRIBUTING.md ROADMAP.md web/DEVELOPING.md web/CHANGELOG.md
+sed -i -e "s/Merlin's Potions/$project_name/g" web/app/containers/header/partials/header-title.jsx
+sed -i -e "s/https:\/\/www.merlinspotions.com\//$project_url/g" web/app/static/manifest.json
+sed -i -e "s/Merlin's Potions/$project_name/g" web/app/static/manifest.json
+sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
 
 # This is about the web
 cd web || exit
@@ -56,7 +63,7 @@ egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "
 egrep -lR "siteUrl" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/\"siteUrl\": \"\"/\"siteUrl\": \"$project_url\"/g" 2>/dev/null
 
 printf "\nInstalling project dependencies\n"
-npm install
+# npm install
 
 # Make first commit
 cd "$project_dir" || exit
