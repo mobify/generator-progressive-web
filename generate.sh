@@ -63,7 +63,7 @@ egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "
 egrep -lR "siteUrl" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/\"siteUrl\": \"\"/\"siteUrl\": \"$project_url\"/g" 2>/dev/null
 
 printf "\nInstalling project dependencies\n"
-# npm install
+npm install
 
 # Make first commit
 cd "$project_dir" || exit
