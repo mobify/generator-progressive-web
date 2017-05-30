@@ -48,6 +48,8 @@ cd "$project_dir" || exit
 
 # Remove files that are specific to the scaffold but not to projects
 rm CONTRIBUTING.md ROADMAP.md web/DEVELOPING.md web/CHANGELOG.md
+
+# To replace title in header-title
 sed -i -e "s/Merlin's Potions/$project_name/g" web/app/containers/header/partials/header-title.jsx
 # To replace start_url in the manifest.json
 sed -i -e "s/https:\/\/www.merlinspotions.com\//$project_url/g" web/app/static/manifest.json
