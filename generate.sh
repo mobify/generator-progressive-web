@@ -59,11 +59,11 @@ sed -i -e "s/Merlin's Potions/$project_name/g" web/app/static/manifest.json
 # To replace short_name in the manifest.json
 sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
 
-# Replace property values across stylesheets with their respective ui_kit_value
-grep -rl ui_kit_value web/app/ | xargs sed -i '' -e "s/\:.*ui_kit_value//g"
-
 # This is about the web
 cd web || exit
+
+# Replace property values across stylesheets with their respective ui_kit_value
+egrep -lR "ui_kit_value" ./app | xargs sed -i '' "s/\:.*ui_kit_value//g"
 
 # Replace "progressive-web-scaffold" with $project_slug inside of files.
 egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/progressive-web-scaffold/$project_slug/g" 2>/dev/null
