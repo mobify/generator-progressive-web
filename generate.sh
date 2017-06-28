@@ -3,9 +3,8 @@ set -o pipefail
 
 MYDIR=$(pwd)
 # SCAFFOLD_VERSION_OR_BRANCH="master"
-SCAFFOLD_VERSION_OR_BRANCH="debrand-automation"
-# SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
-SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/temp-debrand-automation.zip"
+SCAFFOLD_VERSION_OR_BRANCH="temp-debrand-automation"
+SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
 
 # Prompt license and do not proceed unless user has accepted
 read -p"--> We have a license you must read and agree to. Read license? (y/n) " -n 1 -r
