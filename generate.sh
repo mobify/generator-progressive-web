@@ -58,7 +58,7 @@ sed -i -e "s/Merlin's Potions/$project_name/g" web/app/static/manifest.json
 # To replace short_name in the manifest.json
 sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
 # To replace variable values in _variable.scss with their respective ui_kit_value
-sed -i -e "s/\:.*ui_kit_value//" web/app/styles/_variables.scss
+sed -i -e "s/\:.*ui_kit_value//g" web/app/styles/_variables.scss
 
 # This is about the web
 cd web || exit
