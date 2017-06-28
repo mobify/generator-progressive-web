@@ -58,8 +58,9 @@ sed -i -e "s/https:\/\/www.merlinspotions.com\//$project_url/g" web/app/static/m
 sed -i -e "s/Merlin's Potions/$project_name/g" web/app/static/manifest.json
 # To replace short_name in the manifest.json
 sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
-# To replace variable values in _variable.scss with their respective ui_kit_value
-sed -i '' -e "s/\:.*ui_kit_value//g" web/app/styles/_variables.scss
+
+# Replace property values across stylesheets with their respective ui_kit_value
+grep -rl ui_kit_value ./app | xargs sed -i '' -e "s/\:.*ui_kit_value//g"
 
 # This is about the web
 cd web || exit
