@@ -60,7 +60,7 @@ sed -i -e "s/Merlin's Potions/$project_name/g" web/app/static/manifest.json
 sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
 
 # Replace property values across stylesheets with their respective ui_kit_value
-grep -rl ui_kit_value ./app | xargs sed -i '' -e "s/\:.*ui_kit_value//g"
+grep -rl ui_kit_value web/app/ | xargs sed -i '' -e "s/\:.*ui_kit_value//g"
 
 # This is about the web
 cd web || exit
