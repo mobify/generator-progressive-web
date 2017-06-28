@@ -2,7 +2,8 @@
 set -o pipefail
 
 MYDIR=$(pwd)
-SCAFFOLD_VERSION_OR_BRANCH="master"
+# SCAFFOLD_VERSION_OR_BRANCH="master"
+SCAFFOLD_VERSION_OR_BRANCH="debrand-automation"
 # SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
 SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/temp-debrand-automation.zip"
 
