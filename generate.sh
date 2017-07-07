@@ -63,7 +63,7 @@ sed -i -e "s/Merlin's/$project_name/g" web/app/static/manifest.json
 cd web || exit
 
 # Replace property values across stylesheets with their respective ui_kit_value
-egrep -lR "ui_kit_value" ./app | xargs sed -i '' "s/\:.*ui_kit_value//g"
+egrep -lR "ui_kit_value" $(find ./app -name '*.css' -o -name  '*.scss') | xargs sed -i '' "s/\:.*ui_kit_value//g"
 
 # Replace "progressive-web-scaffold" with $project_slug inside of files.
 egrep -lR "progressive-web-scaffold" . | tr '\n' '\0' | xargs -0 -n1 sed -i '' "s/progressive-web-scaffold/$project_slug/g" 2>/dev/null
