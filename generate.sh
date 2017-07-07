@@ -2,8 +2,7 @@
 set -o pipefail
 
 MYDIR=$(pwd)
-# SCAFFOLD_VERSION_OR_BRANCH="master"
-SCAFFOLD_VERSION_OR_BRANCH="temp-debrand-automation"
+SCAFFOLD_VERSION_OR_BRANCH="master"
 SCAFFOLD_URL="https://github.com/mobify/platform-scaffold/archive/$SCAFFOLD_VERSION_OR_BRANCH.zip"
 
 # Prompt license and do not proceed unless user has accepted
