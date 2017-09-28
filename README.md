@@ -1,4 +1,6 @@
-# Progressive Web Generator
+# DEPRECATED Progressive Web Generator
+**This is the old progressive web generator and his been deprecated. To generate projects with the new generator follow [these instructions](https://docs.mobify.com/progressive-web/latest/getting-started/quick-start/#generating-the-project-files).**
+**Code for the new generator lives: https://github.com/mobify/platform-generator**
 
 ## Requirements <a name="requirements">#</a>
 
